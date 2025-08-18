@@ -1,0 +1,13 @@
+[package]
+name = "echor"
+authors = ["<bruno.camargo>"]
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+
+[dev-dependencies]
+assert_cmd = "2"
+anyhow = "1"
+predicates = "3"
