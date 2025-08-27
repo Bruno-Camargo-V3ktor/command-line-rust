@@ -2,7 +2,7 @@ use clap::Parser;
 
 #[derive(Debug, Parser)]
 #[command(
-    author = "Bruno-Camargo-Ferreira <brunp.ferreira.v3ktor@gmail.com>",
+    author = "Bruno-Camargo-Ferreira<brunp.ferreira.v3ktor@gmail.com>",
     version,
     about = "Rust version of 'wc'"
 )]
@@ -32,7 +32,15 @@ pub fn get_args() -> anyhow::Result<Args> {
     Ok(Args::parse())
 }
 
-pub fn run(args: Args) -> anyhow::Result<()> {
-    println!("{args:#?}");
+pub fn run(mut args: Args) -> anyhow::Result<()> {
+    if [args.words, args.bytes, args.chars, args.lines]
+        .iter()
+        .all(|v| v == &false)
+    {
+        args.lines = true;
+        args.words = true;
+        args.bytes = true;
+    }
+
     Ok(())
 }
