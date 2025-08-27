@@ -31,3 +31,8 @@ pub struct Args {
 pub fn get_args() -> anyhow::Result<Args> {
     Ok(Args::parse())
 }
+
+pub fn run(args: Args) -> anyhow::Result<()> {
+    println!("{args:#?}");
+    Ok(())
+}
