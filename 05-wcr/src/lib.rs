@@ -27,3 +27,7 @@ pub struct Args {
     #[arg(short('m'), long, conflicts_with("bytes"))]
     chars: bool,
 }
+
+pub fn get_args() -> anyhow::Result<Args> {
+    Ok(Args::parse())
+}
