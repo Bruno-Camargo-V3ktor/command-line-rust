@@ -1,6 +1,9 @@
 use clap::Parser;
-use uniqr::Args;
+use uniqr::{Args, run};
 
 fn main() {
-    let _args = Args::parse();
+    if let Err(e) = run(Args::parse()) {
+        eprintln!("{e}");
+        std::process::exit(1);
+    }
 }

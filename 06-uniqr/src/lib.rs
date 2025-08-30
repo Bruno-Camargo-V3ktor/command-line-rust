@@ -19,3 +19,8 @@ pub struct Args {
     #[arg(short, long)]
     count: bool,
 }
+
+pub fn run(args: Args) -> anyhow::Result<()> {
+    println!("{args:?}");
+    Ok(())
+}
