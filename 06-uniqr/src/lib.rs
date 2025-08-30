@@ -1,3 +1,8 @@
+use std::{
+    fs::File,
+    io::{self, BufRead, BufReader},
+};
+
 use clap::Parser;
 
 #[derive(Debug, Parser)]
@@ -18,6 +23,13 @@ pub struct Args {
     // Show counts
     #[arg(short, long)]
     count: bool,
+}
+
+pub fn open(filename: &str) -> anyhow::Result<Box<dyn BufRead>> {
+    match filename {
+        "-" => Ok(Box::new(BufReader::new(io::stdin()))),
+        _ => Ok(Box::new(BufReader::new(File::open(filename)?))),
+    }
 }
 
 pub fn run(args: Args) -> anyhow::Result<()> {
