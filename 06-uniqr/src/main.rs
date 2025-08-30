@@ -1,3 +1,6 @@
+use clap::Parser;
+use uniqr::Args;
+
 fn main() {
-    println!("Hello, world!");
+    let _args = Args::parse();
 }
